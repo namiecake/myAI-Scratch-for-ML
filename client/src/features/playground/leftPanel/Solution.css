@@ -1,0 +1,216 @@
+.solutions-view {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: calc(100vh - 100px); /* Set specific height, accounting for header */
+    overflow: hidden;
+  }
+  
+  .solutions-left-column {
+    flex: 0 0 30%;
+    border-right: 2px solid var(--light-gray);
+    overflow-y: scroll;
+    height: 100%;
+  }
+  
+  .solutions-right-column {
+    flex: 0 0 70%;
+    padding: 20px;
+    overflow-y: scroll;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Add smooth scrolling to both panels */
+  .solutions-left-column,
+  .solutions-right-column {
+    scrollbar-width: thin;
+    scrollbar-color: var(--light-gray) transparent;
+  }
+  
+  /* Webkit scrollbar styling */
+  .solutions-left-column::-webkit-scrollbar,
+  .solutions-right-column::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .solutions-left-column::-webkit-scrollbar-track,
+  .solutions-right-column::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .solutions-left-column::-webkit-scrollbar-thumb,
+  .solutions-right-column::-webkit-scrollbar-thumb {
+    background-color: var(--light-gray);
+    border-radius: 4px;
+  }
+  
+  .solution-button {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 2px solid var(--light-gray);
+    text-align: left;
+    cursor: pointer;
+  }
+  .solution-button.active {
+    background-color: var(--light-gray) !important;
+  }
+  .solution-button:hover {
+    background-color: var(--white-gray);
+  }
+  .solution-button-name {
+    font-size: 1em;
+    font-weight: bold;
+  }
+  .solution-button-accuracy {
+    font-size: 0.8em;
+    color: var(--dark-gray);
+  }
+  
+  /* Model Design Icons */
+  .metrics-table svg {
+    width: 20px;
+    height: 20px;
+    margin: 2px 0;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+  }
+  
+  .metrics-table svg:hover {
+    opacity: 1;
+  }
+  
+  .metrics-table td {
+    padding: 0px;
+    vertical-align: top;
+  }
+  
+  /* Ensure consistent spacing in the model design table */
+  .metrics-table p {
+    margin: 4px 0;
+    line-height: 1.5;
+  }
+  
+  /* Model Design Table */
+  .model-design-table {
+    border-collapse: collapse;
+    position: relative;
+  }
+  
+  .model-design-table td {
+    padding: 8px 12px;
+    vertical-align: middle;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Column widths for model design table */
+  .model-design-table td:first-child {
+    width: 140px;
+    font-weight: 500;
+  }
+  
+  .model-design-table td:nth-child(2) {
+    width: 160px;
+    overflow: hidden;
+    height: 100%;
+  }
+  
+  .model-design-table td:last-child {
+    width: auto;
+    color: var(--dark-gray);
+    padding-left: 16px;
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+  
+  .model-design-table .blocks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    margin-top: -12px;
+    padding-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    max-height: 100%;
+  }
+  
+  .model-design-table tbody {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .model-design-table .block-container {
+    position: relative;
+    transform: scale(0.8);
+    transform-origin: left center;
+    margin-left: 0px;
+    margin-bottom: -25px;
+  }
+  
+  .model-design-table .block-container:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0px;
+  }
+  
+  .model-design-table .draggable-block {
+    position: relative !important;
+    cursor: default;
+    pointer-events: none;
+    margin: 0;
+  }
+  
+  tr:not(:first-child) .block-container {
+    margin-top: -8px;
+  }
+  
+  /* Metrics tables container */
+  .metrics-table {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .metrics-table thead th {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding: 8px;
+    text-align: center;
+    border-bottom: 2px solid var(--light-gray);
+    font-weight: 500;
+    z-index: 10;
+  }
+  
+  .metrics-table tr {
+    background-color: transparent !important;
+  }
+  
+  .metrics-table tr:nth-child(even),
+  .metrics-table tr:nth-child(odd) {
+    background-color: transparent !important;
+  }
+  
+  .metrics-table tbody tr {
+    background-color: transparent !important;
+  }
+  
+  /* Solution Overview styling */
+  .solution-overview {
+    margin-bottom: 20px;
+    padding: 16px;
+    background-color: var(--white-gray);
+    border-radius: 8px;
+  }
+  
+  .solution-overview p {
+    margin: 0;
+    line-height: 1.5;
+    color: var(--dark-gray);
+    font-size: 0.95em;
+  }
+  

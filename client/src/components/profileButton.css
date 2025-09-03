@@ -1,0 +1,8 @@
+.profile-button:hover {
+  background-color: #808080;
+  transform: translateY(-1px);
+}
+
+.logout-button:hover {
+  background-color: #fff1f1;
+} 

@@ -1,0 +1,12 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: myai-api-service
+spec:
+  template:
+    spec:
+      containers:
+        - image: us-west1-docker.pkg.dev/cs194-449021/myai-api/myai-api:latest
+          env:
+          ports:
+            - containerPort: 4000

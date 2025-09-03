@@ -1,0 +1,19 @@
+.draggable-block {
+  width: fit-content;
+  background-color: transparent;
+  color: var(--white);
+}
+
+.droppable-block {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 0 4px;
+  width: max-content;
+}
+
+.droppable-block p {
+  font-size: 0.75em;
+  font-weight: bold;
+  width: max-content;
+}

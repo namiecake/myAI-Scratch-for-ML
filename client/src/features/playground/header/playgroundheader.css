@@ -1,0 +1,68 @@
+.playground-header-container {
+  background-color: #2563eb;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+
+.challenge-title h1 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.home-button,
+.sign-out-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 800;
+  transition: background-color 0.2s;
+}
+
+.home-button:hover,
+.sign-out-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.home-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.sign-out-button {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.sign-out-button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* For mobile responsiveness */
+@media (max-width: 480px) {
+  .challenge-title h1 {
+    font-size: 16px;
+  }
+
+  .home-button span:not(.home-icon) {
+    display: none;
+  }
+
+  .home-button,
+  .sign-out-button {
+    padding: 6px 8px;
+  }
+}

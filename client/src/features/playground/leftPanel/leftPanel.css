@@ -1,0 +1,39 @@
+.solutions-view {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.solutions-left-column {
+  flex: 0 0 30%;
+  border-right: 2px solid var(--light-gray);
+  overflow-y: auto;
+}
+.solutions-right-column {
+  flex: 0 0 70%;
+  padding: 20px;
+}
+
+.solution-button {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  border-bottom: 2px solid var(--light-gray);
+  text-align: left;
+  cursor: pointer;
+}
+.solution-button.active {
+  background-color: var(--light-gray) !important;
+}
+.solution-button:hover {
+  background-color: var(--white-gray);
+}
+.solution-button-name {
+  font-size: 1em;
+  font-weight: bold;
+}
+.solution-button-accuracy {
+  font-size: 0.8em;
+  color: var(--dark-gray);
+}

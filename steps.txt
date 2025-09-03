@@ -1,0 +1,67 @@
+Add the following to datasetstf folder: datasets/* (datasets folder containing datasets)
+
+1. Go to DatasetsTF and run terraform init, terraform apply 
+2. Go to modelgenerator and run the deploy.sh script 
+3. Go to JobProcessorTF, go to src/main.py, correct the name of the docker file of the modelgenerator if changed and run the deploy.sh script 
+4. Go to servertf, change src/playground/router.py's job processor endpoint to the actual job processor endpoint, then run deploy.sh script (NOTE YOU MAY HAVE TO CHANGE CLOUD TASKS QUEUE NAME IN SET_VARIABLES.TF, in which case also change cloud tasks queue name in the playground/router.py)
+
+To delete everything, go back to each folder with terraform files and simply run terraform destroy
+Go to "Artifacts Registry" and clear any repositories that are remaining 
+Check GCP billing to make sure all is good
+Sometimes will need to rerun terraform apply if things get stuck, or if service already exists have to manually delete it
+
+Questions: Should we restrict access to the layers under the server (job processor TF for example) from being accessed
+by the outside? Can change google permissions for the cloud run to access by not all members but just cloud tasks
+Chance that current implementation of job processor gets bottlenecked by each job (it waits for response before queueing) <-- how can we do this async?
+
+Servertf's terraform is a little glitchy may have to run once, stop it and re run if things get stuck
+
+Problems: pubsub channel works from local but from vertex ai it keeps throwing error while messaging???
+"Error while publishing pubsub message 403 User not authorized to perform this action."
+
+GCP denies by default for services so if we want interaction we should be very specific
+
+Only need to check: communciation from vertex to server
+Still need to delete the unused pubsub related stuff. Need to gitignore terraform state files
+
+########### A NOTE FROM CLAUDE:
+The `google_project_service_identity` service account for Vertex AI is used when Vertex AI itself needs to perform operations on your behalf, such as:
+
+1. Reading from and writing to Cloud Storage (for model artifacts, training data)
+2. Accessing Container Registry/Artifact Registry (to pull containers)
+3. Internal API calls between different Vertex AI services
+4. Logging and monitoring operations
+
+Some specific use cases where you might need to grant permissions to this service identity:
+
+```hcl
+# Allow Vertex AI to write logs
+resource "google_project_iam_member" "vertex_logging" {
+  project = var.project_id
+  role    = "roles/logging.logWriter"
+  member  = "serviceAccount:${google_project_service_identity.vertex_sa.email}"
+}
+
+# Allow Vertex AI to write monitoring metrics
+resource "google_project_iam_member" "vertex_monitoring" {
+  project = var.project_id
+  role    = "roles/monitoring.metricWriter"
+  member  = "serviceAccount:${google_project_service_identity.vertex_sa.email}"
+}
+
+# Allow Vertex AI to access artifacts in Cloud Storage
+resource "google_storage_bucket_iam_member" "vertex_storage" {
+  bucket = "your-model-artifacts-bucket"
+  role   = "roles/storage.objectViewer"
+  member = "serviceAccount:${google_project_service_identity.vertex_sa.email}"
+}
+```
+
+However, for permissions that your actual training jobs or prediction endpoints need (like publishing to Pub/Sub, accessing specific databases, etc.), you'll want to grant those to either:
+- The default compute service account
+- A custom service account that you specify when creating jobs/endpoints
+
+Most of the time, you won't need to interact directly with the service identity account unless you're troubleshooting issues with Vertex AI's internal operations or setting up logging/monitoring permissions.
+##################
+Basically we need to be careful when setting permissions that we are distinguishing between: internal service account (service identity retrieved from type.platform.api) versus a service account actually used by the job (which you can find with cli)
+The former is for things like GCS access (interaction from service-service) and the other is for accessing endpoint

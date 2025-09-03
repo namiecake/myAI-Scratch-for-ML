@@ -1,0 +1,376 @@
+playground-section-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.playground-section {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100%;
+  /* padding: 20px; */
+}
+
+.block-store {
+  display: flex;
+  flex: 0.65 0 0;
+  min-width: 300px;
+  min-height: 0px;
+  border-right: 2px solid var(--light-gray);
+}
+
+.block-store .draggable-block {
+  margin: 5px;
+}
+
+.helper-section {
+  flex: 0.35 0 0;
+  min-height: 0;
+  padding: 10px;
+  overflow: auto;
+  /* border-radius: 10px; */
+  width: 100%;
+  border-right: 2px solid var(--light-gray);
+  border-top: 2px solid var(--light-gray);
+}
+
+.category-container {
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid var(--light-gray);
+}
+
+.category-container button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 12px;
+  font-size: 0.75em;
+}
+
+.category-container .category-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.available-block-wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+
+.available-block-container {
+  padding: 10px;
+  height: 100%;
+  /* width: fit-content; */
+  width: 100%;
+  overflow: auto;
+  /* overflow-y: scroll;
+  width: 100px; */
+}
+
+.available-block-header {
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.block-sandbox-wrapper {
+  display: flex;
+  max-height: 93vh;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.block-sandbox {
+  flex: 1;
+  width: 100%;
+  min-height: 200vh;
+}
+
+.right-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.controls {
+  flex: 0.05 0 auto;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-bottom: 0px;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.control-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.control-button:hover {
+  opacity: 0.8;
+}
+
+.start-button {
+  background-color: #4caf50; /* Green */
+}
+
+.eval-button {
+  background-color: #007bff; /* Blue */
+}
+
+.cancel-button {
+  background-color: #dc3545; /* Red */
+}
+
+.model-output {
+  flex: 2 0 auto;
+  border-radius: 0px;
+  overflow-y: auto;
+  height: 40vh;
+  scrollbar-gutter: stable;
+  padding: 5px;
+}
+
+.model-evaluation {
+  flex: 0.8 0 auto;
+  border: 2px solid grey;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 70%;
+}
+
+.tab-container {
+  display: flex;
+  align-items: end;
+  height: 60px;
+  gap: 5px;
+  padding: 0 0 0 0;
+  flex-shrink: 0;
+  /* border-bottom: 2px solid #ccc; */
+  /* margin-bottom: 10px; */
+}
+
+.tab-button {
+  padding: 8px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+  border-radius: 5px 5px 0 0;
+  transition: all 0.3s ease;
+}
+.tab-button:hover {
+  background-color: #e8e6e6;
+}
+.tab-button:disabled {
+  color: var(--light-gray);
+  cursor: not-allowed;
+}
+.tab-button:disabled:hover {
+  background-color: transparent;
+}
+
+.tab-button.active {
+  color: black;
+  background-color: #ccc;
+  font-weight: bold;
+}
+
+.panels-container {
+  display: flex;
+  flex: 1;
+  /* gap: 20px; */
+  border-radius: 8px;
+  border: 2px solid var(--light-gray);
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  background-color: #333;
+  color: white;
+  text-align: left;
+  padding: 8px 12px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1000;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 10px;
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  /* Text wrapping properties */
+  width: 300px;
+  max-width: 50vw;
+  white-space: normal;
+  line-height: 1.4;
+  max-height: 5em;
+  overflow: hidden;
+  font-size: 0.9em;
+  padding-bottom: 10px;
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #333 transparent transparent;
+}
+
+.info-button-container {
+  position: relative;
+  display: inline-block;
+}
+
+.info-button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  background: #e9ecef;
+  color: #495057;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  padding: 0;
+  line-height: 1;
+}
+
+.info-button svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.info-button:hover {
+  background: #dee2e6;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-text {
+  color: #333;
+  line-height: 1.5;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.modal-close-button {
+  align-self: flex-end;
+  padding: 8px 16px;
+  background: #e9ecef;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #495057;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.info-popup.top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+}
+.info-popup.bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+}
+.info-popup.left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 8px;
+}
+.info-popup.right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 8px;
+}
+
+.drag-overlay {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* React Tooltip Styles */
+.tooltip {
+  background-color: var(--white-gray) !important;
+  color: darkgrey !important;
+  padding: 8px 12px !important;
+  border-radius: 6px !important;
+  font-size: 0.9em !important;
+  max-width: 300px !important;
+  z-index: 9999 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+}
+
+.tooltip::after {
+  border-right-color: var(--background-color) !important;
+  opacity: 1 !important;
+}

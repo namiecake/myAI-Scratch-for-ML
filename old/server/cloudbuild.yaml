@@ -1,0 +1,5 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'Dockerfile.prod', '-t', 'us-west1-docker.pkg.dev/cs194-449021/myai-api/myai-api:latest', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-west1-docker.pkg.dev/cs194-449021/myai-api/myai-api:latest']

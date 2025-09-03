@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --white: #ffffff;
+  --light-blue: rgb(76, 151, 255);
+  --dark-blue: rgb(51, 115, 204);
+  --light-purple: rgb(153, 102, 255);
+  --dark-purple: rgb(102, 51, 204);
+  --light-green: rgb(89, 192, 89);
+  --dark-green: rgb(56, 148, 56);
+  --light-orange: rgb(255, 140, 26);
+  --dark-orange: rgb(219, 110, 0);
+  --light-yellow: rgb(255, 191, 0);
+  --dark-yellow: rgb(204, 153, 0);
+  --light-red: rgb(255, 76, 76);
+  --dark-red: rgb(204, 0, 0);
+  --light-gray: #dedede;
+  --white-gray: #f2f2f2;
+
+  --block-height: 32px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden !important;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
