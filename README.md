@@ -1,10 +1,9 @@
-# myAI
-<img src="hustlers.jpg" width="150" />
+## Overview
+Scratch for Machine Learning: a hands-on, visual platform to teach foundational machine learning (ML) concepts through experimentation and play. Unlike existing low-code/no-code tools that prioritize outcomes over understanding, this product emphasizes conceptual clarity while allowing users to see their ideas in action.
 
-# Important Links
-- Team milestones (team assignments): https://github.com/StanfordCS194/win25-Team8/milestones
-- Course Syllabus (accurate assignment deadlines and schedule): https://docs.google.com/spreadsheets/d/1Y5Lcy-f3GsL_aUVHTDTYkmbaJQqK7sEhrNU9xM57UpQ/edit?usp=sharing
-- Wiki: https://github.com/StanfordCS194/win25-Team8/wiki
+## Key features:
+- A block-based interface inspired by Scratch, tailored for building ML models.
+- An emphasis on the why and how behind ML concepts, avoiding abstraction that hides the logic.
+- Challenge focused on classification and prediction
 
-Notes to try deployment:
-If you are trying to deploy the backend, first run the docker container locally via vscode (you have to install docker desktop first). Then, go to deploy.sh and uncomment "gcloud init". Then run the script and follow instructions.
+Target Audience: Users with basic mathematical and programming fluency seeking to deepen their conceptual understanding of ML. 
